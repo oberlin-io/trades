@@ -1,0 +1,5 @@
+{
+  "PG_USER": "postgres",
+  "PG_PASSWD": "postgres",
+  "PG_SERVER": "localhost"
+}
