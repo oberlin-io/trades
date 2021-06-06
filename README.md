@@ -54,6 +54,7 @@ create database trades;
 List DBs: ```\l```
 
 ### Create tables
+Use ```default current_timestamp``` on ```symbol_created```. Edit ```symbol``` module.
 ```
 create table acct_status(
   acct_status_id serial primary key,

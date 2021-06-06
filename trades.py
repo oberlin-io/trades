@@ -2,12 +2,14 @@ from app.acct_status import AcctStatus
 from app.symbol import Symbol
 from app.db_client import PGClient
 import os
+import time
 
 
 os.system('clear')
 m='Connecting to trades database...'
 print(m)
 db=PGClient('trades')
+time.sleep(1)
 
 def menu():
     os.system('clear')
@@ -55,6 +57,8 @@ def run_app(ui):
 
     elif ui.upper()=='X':
         print('Exiting trades...')
+        time.sleep(1)
+        os.system('clear')
         exit()
 
     else:
