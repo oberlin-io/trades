@@ -57,7 +57,7 @@ List DBs: ```\l```
 ```
 create table acct_status(
   acct_status_id serial primary key,
-  acct_status_created timestamp,
+  acct_status_created timestamp default current_timestamp,
   acct_status_cap numeric,
   acct_status_cap_risk_pct numeric,
   acct_status_min_rr_pct numeric
