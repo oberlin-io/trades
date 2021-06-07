@@ -1,5 +1,7 @@
 from app.acct_status import AcctStatus
+from app.setup import Setup
 from app.symbol import Symbol
+from app import analytics
 from app.db_client import PGClient
 import os
 import time
@@ -17,6 +19,7 @@ def menu():
 [1] Get account status
 [2] Change account status
 [3] New setup
+[4] Get best setups
 [X] Exit
 Select: '''
     ui=input(m)
@@ -54,6 +57,20 @@ def run_app(ui):
         symbol.query_symbol_info(db)
         for k, v in symbol.get_symbol_info().items():
             print(f'{k}: {v}')
+
+        setup=Setup(symbol.symbol_id)
+        setup.get_entry_stoploss()
+        setup.query_acct_status(db)
+        setup.calc_risk_amounts()
+        setup.calc_pos_size()
+        setup.calc_min_tp()
+        setup.is_min_tp_realistic()
+        setup.load_setup(db)
+        for k, v in setup.get_setup_info(db).items():
+            print(f'{k}: {v}')
+
+    elif ui=='4':
+        print(analytics.get_top_setups(db))
 
     elif ui.upper()=='X':
         print('Exiting trades...')

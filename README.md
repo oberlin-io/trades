@@ -71,9 +71,9 @@ create table symbols(
 create table setups(
   setup_id serial primary key,
   symbol_id int references symbols(symbol_id),
-  setup_created timestamp,
+  setup_created timestamp default current_timestamp,
   setup_entry numeric,
-  setup_sl numeric,
+  setup_stoploss numeric,
   setup_min_tp numeric,
   setup_min_tp_realistic boolean,
   setup_pos_size numeric,
